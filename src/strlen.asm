@@ -1,8 +1,8 @@
 section .text
-    global strlen:function
+    global my_strlen:function
     ; size_t strlen(const char *str);
 
-strlen:
+my_strlen:
     ; rdi = s
     mov rax, rdi                    ;On bouge le 1er argument de strlen dans le registre rax
 

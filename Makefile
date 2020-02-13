@@ -22,7 +22,8 @@ T_NAME	=	unit_tests
 SRCS	=	$(SRCFOLDER)strlen.asm		\
 			$(SRCFOLDER)strchr.asm		\
 			$(SRCFOLDER)memset.asm		\
-			$(SRCFOLDER)strcmp.asm
+			$(SRCFOLDER)memcpy.asm		\
+			$(SRCFOLDER)strcmp.asm		\
 
 T_SRCS	=	tests/test_assembly.c
 
@@ -30,11 +31,10 @@ OBJS	=	$(SRCS:.asm=.o)
 
 T_OBJS	=	$(T_SRCS:.c=.o)
 
-
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-		$(CC) -nostdlib -shared -fPIC $(OBJS) -o $(NAME)
+		$(CC) -shared -fPIC $(OBJS) -o $(NAME)
 
 tests_run:	$(T_OBJS)
 		$(CC) $(T_OBJS) -o $(T_NAME) -lcriterion -lgcov

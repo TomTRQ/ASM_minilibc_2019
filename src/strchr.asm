@@ -1,16 +1,16 @@
 section .text
-    global strchr:function
+    global my_strchr:function
     ; char *strchr(char *str, char c)
 
-strchr:
+my_strchr:
     ; rdi = str
-    ; al = c
+    ; sil = c
     mov rax, rdi
 
 .start:
     cmp BYTE [rax], 0x0
     jz .end
-    cmp BYTE [rax], al
+    cmp BYTE [rax], sil
     jz .end
     inc rax
     jmp .start

@@ -1,21 +1,22 @@
 section .text
-    global memset:function
+    global my_memset:function
     ; void *memset(void *pointer, int value, size_t count)
 
-memset:
+my_memset:
     ; rdi = pointer
-    ; rsi = value
+    ; sil = value
     ; rdx = count
-    xor rcx, rcx
+
+    xor rcx, rcx                    ;On initialise une valeur à 0
 
 .start:
-    cmp rcx, rdx
-    jz .end
+    cmp rcx, rdx                    ;On compare rcx avec le count
+    jz .end                         ;Si égal on va à la fin du programme
 
-    ;mov BYTE [rdi + rcx], rsi
-    inc rcx
-    jmp .start
+    mov BYTE [rdi + rcx], sil       ;Sinon on ajoute le caractère
+    inc rcx                         ;On incrémente la valeur
+    jmp .start                      ;On repart au début
 
 .end:
-    mov rax, rdi
-    ret
+    mov rax, rdi                    ;On déplace notre pointer dans rax pour le renvoyer
+    ret                             ;On quitte le programme en renvoyant rax
