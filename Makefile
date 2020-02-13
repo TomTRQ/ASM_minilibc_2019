@@ -1,36 +1,54 @@
 ##
-## EPITECH PROJECT, 2019
+## EPITECH PROJECT, 2020
 ## Makefile
 ## File description:
-## Makefile for malloc project
+## Makefile for minlibc
 ##
 
-MAINF	=	./src/
+ASM	=	nasm
 
-SRC		=	$(MAINF)strlen.asm				\
-			$(MAINF)strchr.asm				\
-			$(MAINF)memset.asm				\
+CC	=	gcc
 
-OBJ	=	$(SRC:.c=.o)
+RM	=	rm -f
 
-LIBFL	=	-shared -fPIC
+SRCFOLDER	=	./src/
+
+ASFLAGS	=	-f elf64
 
 NAME	=	libasm.so
 
-all:	$(NAME)
+T_NAME	=	unit_tests
 
-$(NAME):	$(OBJ)
-	gcc -o $(NAME) $(LIBFL) $(OBJ)
+SRCS	=	$(SRCFOLDER)strlen.asm		\
+			$(SRCFOLDER)strchr.asm		\
+			$(SRCFOLDER)memset.asm		\
+			$(SRCFOLDER)strcmp.asm
+
+T_SRCS	=	tests/test_assembly.c
+
+OBJS	=	$(SRCS:.asm=.o)
+
+T_OBJS	=	$(T_SRCS:.c=.o)
+
+
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+		$(CC) -nostdlib -shared -fPIC $(OBJS) -o $(NAME)
+
+tests_run:	$(T_OBJS)
+		$(CC) $(T_OBJS) -o $(T_NAME) -lcriterion -lgcov
+		./$(T_NAME)
+
+%.o : %.asm
+		$(ASM) $(ASFLAGS) -o $@ $<
 
 clean:
-	rm -f *.c~
+		$(RM) $(OBJS) $(T_OBJS)
 
-fclean:	clean
-	rm -f $(NAME)
-	rm -f $(TESTNAME)
-	rm -f $(OBJ)
-	rm -f *.gcno
-	rm -f *.gcda
-	rm -f *.o
+fclean:		clean
+		$(RM) $(NAME) $(T_NAME)
 
-re:	fclean all
+re:		fclean all
+
+.PHONY:		all clean fclean re

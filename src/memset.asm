@@ -1,24 +1,21 @@
-section .data
-    text db "TEST"
-
 section .text
     global memset:function
     ; void *memset(void *pointer, int value, size_t count)
 
 memset:
     ; rdi = pointer
-    ; oui = value
-    ; non = count
-    mov rcx, 0
+    ; rsi = value
+    ; rdx = count
+    xor rcx, rcx
 
 .start:
-    cmp rcx, non
+    cmp rcx, rdx
     jz .end
 
-    mov BYTE [rdi], oui
+    ;mov BYTE [rdi + rcx], rsi
     inc rcx
-    inc rdi
     jmp .start
 
 .end:
+    mov rax, rdi
     ret
