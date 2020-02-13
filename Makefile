@@ -23,7 +23,6 @@ SRCS	=	$(SRCFOLDER)strlen.asm		\
 			$(SRCFOLDER)strchr.asm		\
 			$(SRCFOLDER)memset.asm		\
 			$(SRCFOLDER)memcpy.asm		\
-			$(SRCFOLDER)memmove.asm		\
 			$(SRCFOLDER)strcmp.asm		\
 
 T_SRCS	=	tests/test_assembly.c
