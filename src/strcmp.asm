@@ -14,6 +14,8 @@ my_strcmp:
     cmp BYTE [rsi], 0
     jz .end
 
+    cmp dl, cl
+    jne .end
     add dl, BYTE [rdi]
     add cl, BYTE [rsi]
     inc rdi
