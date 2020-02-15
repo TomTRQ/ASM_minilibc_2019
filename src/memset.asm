@@ -1,8 +1,10 @@
+BITS 64
+
 section .text
-    global my_memset:function
+    global memset:function
     ; void *memset(void *pointer, int value, size_t count)
 
-my_memset:
+memset:
     ; rdi = pointer
     ; sil = value
     ; rdx = count

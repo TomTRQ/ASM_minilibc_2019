@@ -1,8 +1,10 @@
+BITS 64
+
 section .text
-    global my_strncmp:function
+    global strncmp:function
     ; int strcmp(const char *first, const char *second, int value);
 
-my_strncmp:
+strncmp:
         ; rdi = first
         ; rsi = second
         ; edx = value

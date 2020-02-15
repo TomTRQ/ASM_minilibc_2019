@@ -1,8 +1,10 @@
+BITS 64
+
 section .text
-    global my_strcmp:function
+    global strcmp:function
     ; int strcmp(const char *first, const char *second);
 
-my_strcmp:
+strcmp:
         ; rdi = first
         ; rsi = second
 

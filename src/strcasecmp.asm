@@ -1,8 +1,10 @@
+BITS 64
+
 section .text
-    global my_strcasecmp:function
+    global strcasecmp:function
     ; int strcasecmp(const char *s1, const char *s2);
 
-my_strcasecmp:
+strcasecmp:
         ; rsi = s1
         ; rdi = s2
 	xor rcx, rcx            ;On initialise un compteur

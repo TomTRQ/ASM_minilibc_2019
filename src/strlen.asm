@@ -1,8 +1,10 @@
+BITS 64
+
 section .text
-    global my_strlen:function
+    global strlen:function
     ; size_t strlen(const char *str);
 
-my_strlen:
+strlen:
     ; rdi = s
     mov rax, rdi                    ;On bouge le 1er argument de strlen dans le registre rax
 

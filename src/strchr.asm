@@ -1,8 +1,10 @@
+BITS 64
+
 section .text
-    global my_strchr:function
+    global strchr:function
     ; char *strchr(char *str, char c)
 
-my_strchr:
+strchr:
     ; rdi = str
     ; sil = c
     mov rax, rdi

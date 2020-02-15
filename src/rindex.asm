@@ -1,8 +1,10 @@
+BITS 64
+
 section .text
-    global my_rindex:function
+    global rindex:function
     ; char *rindex(const char *s, int c);
 
-my_rindex:
+rindex:
         ; rdi = s
         ; sil = c
 

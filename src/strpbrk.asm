@@ -1,3 +1,5 @@
+BITS 64
+
 section .text
     global strpbrk:function
     ; char *strpbrk(const char *s, const char *accept);
