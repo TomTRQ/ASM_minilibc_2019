@@ -12,21 +12,25 @@ strpbrk:
     mov rbx, rsi                ;On met le second argument dans un registre temporaire
 
 .start:
-    xor dil, dil
+    xor ch, ch
     mov rsi, rbx                ;On remet le registre rsi à sa valeur de départ
     cmp BYTE [rax], 0x0
-    jz .end
+    jz .not_found
     inc rax
     jmp .check_loop
     
 .check_loop:
     cmp BYTE [rsi], 0x0
     jz .start
-    mov dil, BYTE [rsi]
-    cmp BYTE [rax], dil
+    mov ch, BYTE [rsi]
+    cmp BYTE [rax], ch
     jz .end
     inc rsi
     jmp .check_loop
+
+.not_found:
+    mov rax, 0
+    ret
 
 .end:
     ret
