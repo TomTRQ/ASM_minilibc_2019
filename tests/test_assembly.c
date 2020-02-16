@@ -114,7 +114,7 @@ void tests_memmove()
     char str2[50];
 
     strcpy(str, "This is string.h libary function");
-    strcpy(str2, "This is string.h libary function");
+    strcpy(str2, "OuiOuiOui");
     memmove(str, str2, 7);
     printf("%s\n", str);
 }
