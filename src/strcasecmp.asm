@@ -7,17 +7,21 @@ section .text
 strcasecmp:
         ; rsi = s1
         ; rdi = s2
-	xor rcx, rcx            ;On initialise un compteur
 	jmp .start
 
 .add:
-	cmp bl, 0
-	je .end
-	inc rcx
+	inc rdi
+	inc rsi
 
 .start:
-	mov bl, BYTE [rdi + rcx]
-	mov dl, BYTE [rsi + rcx]
+	mov bl, BYTE [rdi]
+	mov dl, BYTE [rsi]
+
+	cmp bl, 0x0
+	je .end
+	cmp bl, 0x0
+	je .end
+
 	cmp bl, 'A'         ;Si bl plus petit que 'A'
 	jl .not_upper
 	cmp bl, 'Z'         ;Si bl plus grand que 'Z'
