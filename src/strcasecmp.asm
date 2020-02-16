@@ -22,8 +22,7 @@ strcasecmp:
 	jl .not_upper
 	cmp bl, 'Z'         ;Si bl plus grand que 'Z'
 	jg .not_upper
-	add bl, 32
-    jmp .start
+	add bl, 32			;bl en minuscule
 
 .not_upper:
 	cmp dl, 'A'         ;Si dl plus petit que 'A'

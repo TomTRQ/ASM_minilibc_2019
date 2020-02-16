@@ -17,8 +17,6 @@ ASFLAGS	=	-f elf64
 
 NAME	=	libasm.so
 
-T_NAME	=	unit_tests
-
 SRCS	=	$(SRCFOLDER)strlen.asm		\
 			$(SRCFOLDER)strchr.asm		\
 			$(SRCFOLDER)memset.asm		\
@@ -32,29 +30,21 @@ SRCS	=	$(SRCFOLDER)strlen.asm		\
 			$(SRCFOLDER)strcspn.asm		\
 			$(SRCFOLDER)memmove.asm		\
 
-T_SRCS	=	tests/test_assembly.c
-
 OBJS	=	$(SRCS:.asm=.o)
-
-T_OBJS	=	$(T_SRCS:.c=.o)
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
 		$(CC) -shared -fPIC $(OBJS) -o $(NAME)
-
-tests_run:	$(T_OBJS)
-		$(CC) $(T_OBJS) -o $(T_NAME) -lcriterion -lgcov
-		./$(T_NAME)
-
+	
 %.o : %.asm
 		$(ASM) $(ASFLAGS) -o $@ $<
 
 clean:
-		$(RM) $(OBJS) $(T_OBJS)
+		$(RM) $(OBJS)
 
 fclean:		clean
-		$(RM) $(NAME) $(T_NAME)
+		$(RM) $(NAME)
 
 re:		fclean all
 

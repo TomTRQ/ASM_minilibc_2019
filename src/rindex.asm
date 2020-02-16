@@ -7,7 +7,7 @@ section .text
 rindex:
         ; rdi = s
         ; sil = c
-
+    mov rax, 0
 .start:
     cmp BYTE [rdi], 0
     jz .end
