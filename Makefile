@@ -35,7 +35,7 @@ OBJS	=	$(SRCS:.asm=.o)
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-		$(CC) -shared -fPIC $(OBJS) -o $(NAME)
+		$(CC) -shared $(OBJS) -o $(NAME)
 	
 %.o : %.asm
 		$(ASM) $(ASFLAGS) -o $@ $<
