@@ -12,6 +12,7 @@ strstr:
     mov rax, rdi
     mov rbx, rsi            ;Garder tous les caractères de la string
     xor r8b, r8b            ;Registre temporaire pour le caractère
+    jmp .start
 
 .back_to_start:
     inc rax

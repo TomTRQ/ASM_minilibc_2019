@@ -7,7 +7,7 @@
 
 ASM	=	nasm
 
-CC	=	gcc
+CC	=	ld
 
 RM	=	rm -f
 
