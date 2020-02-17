@@ -9,7 +9,10 @@ my_memmove:
         ;rsi = source
         ;edx = value
 
+        enter 0, 0
+
 .start:
 
 .end:
+    leave
     ret

@@ -9,6 +9,7 @@ strncmp:
         ; rsi = second
         ; edx = value
 
+    enter 0, 0
     xor cl, cl
     xor r8b, r8b
 .start:
@@ -31,4 +32,5 @@ strncmp:
 .end:
     sub r8b, cl                         ;On soustrait les deux valeurs
     movsx rax, r8b                      ;On bouge le résultat dans le registre de retour
+    leave
     ret

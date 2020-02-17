@@ -8,6 +8,7 @@ strcspn:
         ;rdi = string
         ;rsi = rejectedCharacters
 
+    enter 0, 0
     xor rax, rax
     mov rbx, rsi
     jmp .start
@@ -35,4 +36,5 @@ strcspn:
     jmp .check_loop
 
 .end:
+    leave
     ret

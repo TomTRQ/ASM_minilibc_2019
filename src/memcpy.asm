@@ -9,6 +9,7 @@ memcpy:
     ; rsi = value
     ; rdx = count
 
+    enter 0, 0
     xor rcx, rcx                                ;On initialise une valeur à 0
     xor bh, bh                                  ;On initialise un registre tampon
 
@@ -23,4 +24,5 @@ memcpy:
 
 .end:
     mov rax, rdi                                ;On déplace notre registre dans rax pour le renvoyer
+    leave
     ret                                         ;On quitte le programme en renvoyant rax

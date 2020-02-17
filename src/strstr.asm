@@ -8,6 +8,7 @@ strstr:
     ; rdi = fullString
     ; rsi = subString
 
+    enter 0, 0
     mov rax, rdi
     mov rbx, rsi            ;Garder tous les caractères de la string
     xor r8b, r8b            ;Registre temporaire pour le caractère
@@ -44,7 +45,9 @@ strstr:
 
 .not_found:
     mov rax, 0
+    leave
     ret
 
 .end:
+    leave
     ret

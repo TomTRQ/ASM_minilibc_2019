@@ -7,6 +7,8 @@ section .text
 strcasecmp:
         ; rsi = s1
         ; rdi = s2
+
+	enter 0, 0
 	jmp .start
 
 .add:
@@ -43,4 +45,5 @@ strcasecmp:
 .end:
     sub bl, dl 
     movsx rax, bl
+	leave
 	ret

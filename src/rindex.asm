@@ -7,6 +7,8 @@ section .text
 rindex:
         ; rdi = s
         ; sil = c
+
+    enter 0, 0
     mov rax, 0
 .start:
     cmp BYTE [rdi], 0
@@ -23,4 +25,5 @@ rindex:
     jmp .start
 
 .end:
+    leave
     ret

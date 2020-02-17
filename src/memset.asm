@@ -9,6 +9,7 @@ memset:
     ; sil = value
     ; rdx = count
 
+    enter 0, 0
     xor rcx, rcx                    ;On initialise une valeur à 0
 
 .start:
@@ -21,4 +22,5 @@ memset:
 
 .end:
     mov rax, rdi                    ;On déplace notre pointer dans rax pour le renvoyer
+    leave
     ret                             ;On quitte le programme en renvoyant rax

@@ -8,6 +8,7 @@ strpbrk:
         ; rdi = s
         ; rsi = accept
 
+    enter 0, 0
     mov rax, rdi                ;On met le premier argument dans le registre de retour
     mov rbx, rsi                ;On met le second argument dans un registre temporaire
 
@@ -30,7 +31,9 @@ strpbrk:
 
 .not_found:
     mov rax, 0
+    leave
     ret
 
 .end:
+    leave
     ret

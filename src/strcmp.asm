@@ -8,6 +8,7 @@ strcmp:
         ; rdi = first
         ; rsi = second
 
+    enter 0, 0
     xor cl, cl
     xor dl, dl
 .start:
@@ -27,4 +28,5 @@ strcmp:
 .end:
     sub dl, cl
     movsx rax, dl
+    leave
     ret

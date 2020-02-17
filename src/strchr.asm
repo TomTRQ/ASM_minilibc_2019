@@ -7,6 +7,8 @@ section .text
 strchr:
     ; rdi = str
     ; sil = c
+
+    enter 0, 0
     mov rax, rdi
 
 .start:
@@ -19,7 +21,9 @@ strchr:
 
 .null_end:
     mov rax, 0x0
+    leave
     ret
 
 .end:
+    leave
     ret
