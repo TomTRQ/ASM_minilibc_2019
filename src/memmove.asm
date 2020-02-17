@@ -5,24 +5,35 @@ section .text
     ; void *memmove(void *destination, const void *source, size_t size);
 
 memmove:
-    ; rdi = pointer
-    ; rsi = value
-    ; rdx = count
+    ; rdi = destination
+    ; rsi = source
+    ; rdx = size
 
     enter 0, 0
-    xor rcx, rcx                                ;On initialise une valeur à 0
-    xor bh, bh                                  ;On initialise un registre tampon
+	xor rcx, rcx                    ;Initialisation d'un compteur
+    xor bl, bl
+	jmp .start
+
+.add:
+	inc rcx                         ;Incrémentation du compteur
+    jmp .start
 
 .start:
-    cmp rcx, rdx                                ;On compare rcx avec le count
-    jz .end                                     ;Si égal on va à la fin du programme
+	cmp rcx, rdx                    ;Si size == compteur
+	jz .fill_rdi_register
+    movsx rbx, BYTE [rsi + rcx]     ;On met le caractère de rsi dans le registre rbx
+	push rbx                        ;On envoie rbx dans la stack
+	jmp .add
 
-    mov bh, BYTE [rsi + rcx]                    ;Sinon on met la valeur de l'index actuel
-    mov BYTE [rdi + rcx], bh                    ;On ajoute le caractère à rdi
-    inc rcx                                     ;On incrémente la valeur
-    jmp .start                                  ;On repart au début
+.fill_rdi_register:
+	cmp rcx, 0
+	je .end
+	dec rcx                         ;On décrémente le compteur
+	pop rbx                         ;On récupère rbx depuis la stack
+	mov BYTE [rdi + rcx], bl
+	jmp .fill_rdi_register
 
 .end:
-    mov rax, rdi                                ;On déplace notre registre dans rax pour le renvoyer
+	mov rax, rdi
     leave
-    ret                                         ;On quitte le programme en renvoyant rax
+	ret
