@@ -11,11 +11,15 @@ strchr:
 
 .start:
     cmp BYTE [rax], 0x0
-    jz .end
+    jz .null_end
     cmp BYTE [rax], sil
     jz .end
     inc rax
     jmp .start
+
+.null_end:
+    mov rax, 0x0
+    ret
 
 .end:
     ret
