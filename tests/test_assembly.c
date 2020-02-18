@@ -110,13 +110,14 @@ void tests_memset()
 
 void tests_memmove()
 {
-    char str[50];
-    char str2[50];
+    char csrc[100] = "Geeksfor";
+ 
+    memmove(csrc+5, csrc, strlen(csrc)+1); 
+    printf("%s\n", csrc);
 
-    strcpy(str, "This is string.h libary function");
-    strcpy(str2, "OuiOuiOui");
-    memmove(str, str2, 7);
-    printf("%s\n", str);
+    char oui[100] = "Geeksfor"; 
+    memmove(oui+5, oui, strlen(oui)+1); 
+    printf("%s", oui); 
 }
 
 void tests_string()
