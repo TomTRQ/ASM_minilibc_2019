@@ -20,18 +20,18 @@ memmove:
 
 .start:
 	cmp rcx, rdx                    ;Si size == compteur
-	jz .fill_rdi_register
+	jz .fill_rdi_register_reverse
     movsx rbx, BYTE [rsi + rcx]     ;On met le caractère de rsi dans le registre rbx
 	push rbx                        ;On envoie rbx dans la stack
 	jmp .add
 
-.fill_rdi_register:
+.fill_rdi_register_reverse:
 	cmp rcx, 0
 	je .end
 	dec rcx                         ;On décrémente le compteur
 	pop rbx                         ;On récupère rbx depuis la stack
 	mov BYTE [rdi + rcx], bl
-	jmp .fill_rdi_register
+	jmp .fill_rdi_register_reverse
 
 .end:
 	mov rax, rdi
