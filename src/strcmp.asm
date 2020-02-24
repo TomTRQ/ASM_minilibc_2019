@@ -12,15 +12,14 @@ strcmp:
     xor cl, cl
     xor dl, dl
 .start:
-    cmp BYTE [rdi], 0
-    jz .end
-    cmp BYTE [rsi], 0
-    jz .end
-
     cmp dl, cl
     jne .end
     add dl, BYTE [rdi]
     add cl, BYTE [rsi]
+    cmp BYTE [rdi], 0
+    jz .end
+    cmp BYTE [rsi], 0
+    jz .end
     inc rdi
     inc rsi
     jmp .start

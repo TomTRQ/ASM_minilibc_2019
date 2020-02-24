@@ -12,10 +12,10 @@ strchr:
     mov rax, rdi
 
 .start:
-    cmp BYTE [rax], 0x0
-    jz .null_end
     cmp BYTE [rax], sil
     jz .end
+    cmp BYTE [rax], 0x0
+    jz .null_end
     inc rax
     jmp .start
 

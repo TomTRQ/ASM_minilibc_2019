@@ -36,7 +36,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 		$(CC) -shared $(OBJS) -o $(NAME)
-	
+
 %.o : %.asm
 		$(ASM) $(ASFLAGS) -o $@ $<
 
