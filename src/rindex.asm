@@ -21,6 +21,8 @@ rindex:
 
 .add:
     mov rax, rdi
+    cmp BYTE [rdi], 0
+    jz .end
     inc rdi
     jmp .start
 
