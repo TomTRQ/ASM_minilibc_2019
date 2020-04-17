@@ -144,4 +144,5 @@ int main(void)
 {
     tests_string();
     tests_memory();
+    return (0);
 }
